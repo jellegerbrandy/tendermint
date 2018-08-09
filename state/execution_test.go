@@ -15,6 +15,7 @@ import (
 	cmn "github.com/tendermint/tendermint/libs/common"
 	dbm "github.com/tendermint/tendermint/libs/db"
 	"github.com/tendermint/tendermint/libs/log"
+	tmtime "github.com/tendermint/tendermint/types/time"
 
 	"github.com/tendermint/tendermint/proxy"
 	"github.com/tendermint/tendermint/types"
@@ -62,7 +63,7 @@ func TestBeginBlockValidators(t *testing.T) {
 	prevParts := types.PartSetHeader{}
 	prevBlockID := types.BlockID{prevHash, prevParts}
 
-	now := time.Now().UTC()
+	now := tmtime.Now()
 	vote0 := &types.Vote{ValidatorIndex: 0, Timestamp: now, Type: types.VoteTypePrecommit}
 	vote1 := &types.Vote{ValidatorIndex: 1, Timestamp: now}
 
@@ -119,7 +120,7 @@ func TestBeginBlockByzantineValidators(t *testing.T) {
 	ev1 := types.NewMockGoodEvidence(height1, idx1, val1)
 	ev2 := types.NewMockGoodEvidence(height2, idx2, val2)
 
-	now := time.Now()
+	now := tmtime.Now()
 	valSet := state.Validators
 	testCases := []struct {
 		desc                        string

@@ -112,6 +112,18 @@ func validateBlock(stateDB dbm.DB, state State, block *types.Block) error {
 		}
 	}
 
+	// Validate block Time
+	if block.Height > 1 {
+		medianTime := MedianTime(block.LastCommit, state.LastValidators)
+		if !block.Time.Equal(medianTime) {
+			return fmt.Errorf(
+				"Invalid block time. Expected %v, got %v",
+				medianTime,
+				block.Time,
+			)
+		}
+	}
+
 	// Validate all evidence.
 	// TODO: Each check requires loading an old validator set.
 	// We should cap the amount of evidence per block

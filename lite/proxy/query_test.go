@@ -125,7 +125,7 @@ func _TestTxProofs(t *testing.T) {
 	require.NotNil(err)
 	require.Contains(err.Error(), "not found")
 
-	// Now let's check with the real tx hash.
+	// TimeNow let's check with the real tx hash.
 	key = types.Tx(tx).Hash()
 	res, err = cl.Tx(key, true)
 	require.NoError(err, "%+v", err)

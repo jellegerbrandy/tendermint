@@ -110,7 +110,7 @@ func TestGenesisValidatorHash(t *testing.T) {
 
 func randomGenesisDoc() *GenesisDoc {
 	return &GenesisDoc{
-		GenesisTime:     time.Now().UTC(),
+		GenesisTime:     time.Now(),
 		ChainID:         "abc",
 		Validators:      []GenesisValidator{{ed25519.GenPrivKey().PubKey(), 10, "myval"}},
 		ConsensusParams: DefaultConsensusParams(),
