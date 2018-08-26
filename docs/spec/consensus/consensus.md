@@ -200,13 +200,18 @@ conditions](#common-exit-conditions)
 
 ### Proof of Safety
 
-Assume that at most -1/3 of the voting power of validators is byzantine.
+We prove that if 2/3+ of the voting power of validators is honest, at most one block will ever be committed at height `H`.
+
+A validator will commit `B` at height `H` after receiving +2/3 precommmits for that block. 
+So to prove safety, we must show that it will never happen that there are rounds `R` and `R` with 2/3 prevotes for two different blocks `B` and `B'`. 
+Without loss of generality, we can assume that `R'> R`.
 If a validator commits block `B` at round `R`, it's because it saw +2/3
-of precommits at round `R`. This implies that 1/3+ of honest nodes are
-still locked at round `R' > R`. These locked validators will remain
-locked until they see a PoLC at `R' > R`, but this won't happen because
-1/3+ are locked and honest, so at most -2/3 are available to vote for
-anything other than `B`.
+of precommits for that block at round `R`. 
+By assumption, at most -1/3 of the voting power of validators is Byzantine.
+That means that +1/3 of those precommits must be from honest nodes.
+These honest nodes unlock only if they see a PoLC with +2/3 precommits for a different block at `R' > R`,. 
+This can never happen, because the 1/3+ nodes that are honest will remain locked on `B`.
+
 
 ### Proof of Liveness
 
