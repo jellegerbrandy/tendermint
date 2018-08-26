@@ -18,8 +18,8 @@
     for something.
 -   A vote *at* `(H,R)` is a vote signed with the bytes for `H` and `R`
     included in its [sign-bytes](block-structure.html#vote-sign-bytes).
--   *+2/3* is short for "more than 2/3"
--   *1/3+* is short for "1/3 or more"
+-   *+2/3* is short for "more than 2/3", -2/3" is short for "less than 2/3"
+-   *1/3+* is short for "1/3 or more", "1/3-"is short for "1/3 or less"
 -   A set of +2/3 of prevotes for a particular block or `<nil>` at
     `(H,R)` is called a *proof-of-lock-change* or *PoLC* for short.
 
@@ -155,7 +155,7 @@ Upon entering `Prevote`, each validator broadcasts its prevote vote.
 
 The `Prevote` step ends: - After +2/3 prevotes for a particular block or
 `<nil>`. -->; goto `Precommit(H,R)` - After `timeoutPrevote` after
-receiving any +2/3 prevotes. --> goto `Precommit(H,R)` - After
+receiving any +2/3 prevotes.  --> goto `Precommit(H,R)` - After
 [common exit conditions](#common-exit-conditions)
 
 ### Precommit Step (height:H,round:R)
