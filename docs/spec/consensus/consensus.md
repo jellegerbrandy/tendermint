@@ -73,11 +73,11 @@ parameters over each successive round.
       |(When +2/3 Precommits for block found)                  |
       v                                                        |
 +--------------------------------------------------------------------+
-       |  Commit                                                            |
-       |                                                                    |
-       |  * Set CommitTime = now;                                           |
-       |  * Wait for block, then stage/save/commit block;                   |
-       +--------------------------------------------------------------------+
+|  Commit                                                            |
+|                                                                    |
+|  * Set CommitTime = now;                                           |
+|  * Wait for block, then stage/save/commit block;                   |
++--------------------------------------------------------------------+
 ```
 
 Background Gossip
